@@ -3,13 +3,17 @@ title: Home
 layout: home
 ---
 
-This is my personal website. Basically,
+
+
+
+This is my personal website -- WORK IN PROGRESS --
+
+[my cv](/my_cv.md)
 
 
 
 
-
-[Link button](https://just-the-docs.com){: .btn }
+[My LinkedIn](https://www.linkedin.com/in/edoardo-camerinelli/){: .btn .btn-blue }
 
 
 
