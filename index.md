@@ -1,6 +1,7 @@
 ---
 title: Home
 layout: home
+nav_order: 1
 ---
 
 
@@ -8,7 +9,7 @@ layout: home
 
 This is my personal website -- WORK IN PROGRESS --
 
-[my cv](/my_cv.md)
+[my cv](/my_cv.html)
 
 
 
