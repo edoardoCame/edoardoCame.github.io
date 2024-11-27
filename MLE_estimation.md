@@ -1,4 +1,3 @@
-
 ---
 title: MLE Estimation in Python
 layout: default
