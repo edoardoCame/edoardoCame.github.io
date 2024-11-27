@@ -1,3 +1,11 @@
+
+---
+title: MLE Estimation in Python
+layout: default
+nav_order: 3
+---
+
+
 # Index
 
 1. [Introduction](#introduction)
