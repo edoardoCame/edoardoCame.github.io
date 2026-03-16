@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edoardo Camerinelli — Data Scientist & Quantitative Researcher</title>
+    <meta name="description" content="Portfolio of Edoardo Camerinelli — Data Scientist at ISL, Quantitative Finance Researcher, and Co-Founder of E&A Group.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #FAFAF8;
+            --bg-secondary: #F2F1EE;
+            --bg-card: #FFFFFF;
+            --bg-card-hover: #FDFCFB;
+            --text-primary: #1A1A1D;
+            --text-secondary: #4A4A50;
+            --text-muted: #8E8E96;
+            --accent: #8B734A;
+            --accent-light: #A68B5B;
+            --accent-dim: rgba(139, 115, 74, 0.08);
+            --accent-glow: rgba(139, 115, 74, 0.04);
+            --border: rgba(26, 26, 29, 0.08);
+            --border-hover: rgba(139, 115, 74, 0.25);
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.04);
+            --shadow-md: 0 4px 20px rgba(0,0,0,0.06);
+            --shadow-lg: 0 12px 40px rgba(0,0,0,0.08);
+            --font-display: 'Cormorant Garamond', Georgia, serif;
+            --font-body: 'DM Sans', system-ui, sans-serif;
+            --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; font-size: 16px; }
+        body { font-family: var(--font-body); background: var(--bg-primary); color: var(--text-primary); overflow-x: hidden; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+        ::selection { background: var(--accent); color: #fff; }
+        a { color: var(--accent); text-decoration: none; transition: color 0.3s ease; }
+        a:hover { color: var(--text-primary); }
+        img { max-width: 100%; display: block; }
+
+        .nav { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; padding: 1.5rem 3rem; display: flex; justify-content: space-between; align-items: center; transition: all 0.5s var(--ease-out-expo); background: transparent; }
+        .nav.scrolled { background: rgba(250,250,248,0.92); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); padding: 1rem 3rem; border-bottom: 1px solid var(--border); box-shadow: var(--shadow-sm); }
+        .nav-logo { font-family: var(--font-display); font-size: 1.4rem; font-weight: 600; color: var(--text-primary); }
+        .nav-logo span { color: var(--accent); }
+        .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+        .nav-links a { color: var(--text-muted); font-size: 0.78rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; position: relative; padding-bottom: 4px; }
+        .nav-links a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 1.5px; background: var(--accent); transition: width 0.4s var(--ease-out-expo); }
+        .nav-links a:hover { color: var(--text-primary); }
+        .nav-links a:hover::after { width: 100%; }
+        .nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+        .nav-hamburger span { width: 24px; height: 1.5px; background: var(--text-primary); transition: all 0.3s ease; }
+
+        .hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; align-items: center; padding: 0 6%; position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; top: -20%; right: -8%; width: 600px; height: 600px; background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%); pointer-events: none; }
+        .hero::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent); }
+        .hero-content { padding-right: 4rem; position: relative; z-index: 2; }
+        .hero-overline { font-size: 0.72rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--accent); font-weight: 600; margin-bottom: 1.5rem; opacity: 0; transform: translateY(20px); animation: fadeInUp 0.8s var(--ease-out-expo) 0.3s forwards; }
+        .hero-title { font-family: var(--font-display); font-size: clamp(3rem,5.5vw,5.5rem); font-weight: 300; line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 1.8rem; opacity: 0; transform: translateY(30px); animation: fadeInUp 1s var(--ease-out-expo) 0.5s forwards; }
+        .hero-title em { font-style: italic; color: var(--accent); font-weight: 400; }
+        .hero-description { font-size: 1.05rem; color: var(--text-secondary); max-width: 520px; line-height: 1.85; margin-bottom: 2.5rem; opacity: 0; transform: translateY(20px); animation: fadeInUp 0.8s var(--ease-out-expo) 0.7s forwards; }
+        .hero-cta-group { display: flex; gap: 1.2rem; align-items: center; opacity: 0; transform: translateY(20px); animation: fadeInUp 0.8s var(--ease-out-expo) 0.9s forwards; }
+        .btn-primary { display: inline-flex; align-items: center; gap: 0.6rem; padding: 0.9rem 2rem; background: var(--accent); color: #fff; font-family: var(--font-body); font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; border: none; cursor: pointer; transition: all 0.4s var(--ease-out-expo); }
+        .btn-primary:hover { background: var(--text-primary); color: #fff; transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+        .btn-outline { display: inline-flex; align-items: center; gap: 0.6rem; padding: 0.9rem 2rem; background: transparent; color: var(--text-primary); font-family: var(--font-body); font-size: 0.8rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; border: 1.5px solid var(--border); cursor: pointer; transition: all 0.4s var(--ease-out-expo); }
+        .btn-outline:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+
+        .hero-image-wrapper { display: flex; justify-content: center; align-items: center; position: relative; opacity: 0; transform: scale(0.95); animation: fadeInScale 1.2s var(--ease-out-expo) 0.6s forwards; }
+        .hero-image-frame { position: relative; width: 370px; height: 450px; box-shadow: var(--shadow-lg); }
+        .hero-image-frame::before { content: ''; position: absolute; top: -12px; right: -12px; width: 100%; height: 100%; border: 1.5px solid var(--accent); opacity: 0.25; transition: all 0.6s var(--ease-out-expo); }
+        .hero-image-frame:hover::before { top: -8px; right: -8px; opacity: 0.45; }
+        .hero-image-frame img { width: 100%; height: 100%; object-fit: cover; filter: contrast(1.03) saturate(0.9); transition: filter 0.6s ease; }
+        .hero-image-frame:hover img { filter: contrast(1.08) saturate(1); }
+        .hero-image-label { position: absolute; bottom: -40px; left: 0; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); }
+
+        .scroll-indicator { position: absolute; bottom: 3rem; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 0.6rem; opacity: 0; animation: fadeInUp 0.8s var(--ease-out-expo) 1.3s forwards; }
+        .scroll-indicator span { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); }
+        .scroll-line { width: 1px; height: 40px; background: linear-gradient(to bottom, var(--accent), transparent); animation: scrollPulse 2s ease-in-out infinite; }
+
+        .section { padding: 7rem 6%; position: relative; }
+        .section-label { font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--accent); font-weight: 600; margin-bottom: 1rem; }
+        .section-title { font-family: var(--font-display); font-size: clamp(2.2rem,4vw,3.2rem); font-weight: 300; line-height: 1.15; margin-bottom: 1.5rem; }
+        .section-title em { font-style: italic; color: var(--accent); }
+        .section-divider { width: 50px; height: 1.5px; background: var(--accent); margin-bottom: 3rem; }
+        .reveal { opacity: 0; transform: translateY(40px); transition: all 0.9s var(--ease-out-expo); }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        .about { background: var(--bg-secondary); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; margin-top: 2rem; }
+        .about-text p { color: var(--text-secondary); font-size: 1.02rem; line-height: 1.85; margin-bottom: 1.5rem; }
+        .about-text strong { color: var(--text-primary); font-weight: 600; }
+        .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+        .stat-card { padding: 1.8rem; background: var(--bg-card); border: 1px solid var(--border); box-shadow: var(--shadow-sm); transition: all 0.5s var(--ease-out-expo); }
+        .stat-card:hover { border-color: var(--border-hover); transform: translateY(-4px); box-shadow: var(--shadow-md); }
+        .stat-number { font-family: var(--font-display); font-size: 2.6rem; font-weight: 400; color: var(--accent); line-height: 1; margin-bottom: 0.4rem; }
+        .stat-label { font-size: 0.72rem; letter-spacing: 0.08em; color: var(--text-muted); text-transform: uppercase; font-weight: 500; }
+
+        .experience-timeline { margin-top: 3rem; position: relative; }
+        .experience-timeline::before { content: ''; position: absolute; left: 0; top: 0; width: 1.5px; height: 100%; background: linear-gradient(to bottom, var(--accent), var(--border), transparent); }
+        .exp-item { padding-left: 3rem; padding-bottom: 3.5rem; position: relative; }
+        .exp-item:last-child { padding-bottom: 0; }
+        .exp-item::before { content: ''; position: absolute; left: -4px; top: 8px; width: 9px; height: 9px; background: var(--accent); border-radius: 50%; }
+        .exp-item::after { content: ''; position: absolute; left: -8px; top: 4px; width: 17px; height: 17px; border: 1.5px solid var(--accent); border-radius: 50%; opacity: 0.25; }
+        .exp-date { font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); font-weight: 600; margin-bottom: 0.5rem; }
+        .exp-role { font-family: var(--font-display); font-size: 1.7rem; font-weight: 500; margin-bottom: 0.3rem; }
+        .exp-company { font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 0.3rem; }
+        .exp-location { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 1rem; }
+        .exp-description { color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8; max-width: 650px; }
+        .exp-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
+        .exp-tag { padding: 0.3rem 0.8rem; font-size: 0.68rem; letter-spacing: 0.06em; background: var(--accent-dim); color: var(--accent); text-transform: uppercase; font-weight: 600; }
+
+        .projects { background: var(--bg-secondary); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+        .projects-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 1.5rem; margin-top: 3rem; }
+        .project-card { background: var(--bg-card); border: 1px solid var(--border); padding: 2.5rem; box-shadow: var(--shadow-sm); transition: all 0.5s var(--ease-out-expo); position: relative; overflow: hidden; display: flex; flex-direction: column; }
+        .project-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 2px; background: linear-gradient(90deg, var(--accent), transparent); transform: scaleX(0); transform-origin: left; transition: transform 0.6s var(--ease-out-expo); }
+        .project-card:hover { border-color: var(--border-hover); transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+        .project-card:hover::before { transform: scaleX(1); }
+        .project-number { font-family: var(--font-display); font-size: 2.8rem; font-weight: 300; color: var(--accent); opacity: 0.2; line-height: 1; margin-bottom: 1.2rem; }
+        .project-date { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); font-weight: 600; margin-bottom: 0.8rem; }
+        .project-title { font-family: var(--font-display); font-size: 1.4rem; font-weight: 500; line-height: 1.3; margin-bottom: 1rem; }
+        .project-description { color: var(--text-secondary); font-size: 0.88rem; line-height: 1.8; flex-grow: 1; }
+        .project-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border); }
+        .project-card.featured { grid-column: span 2; display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+        .project-card.featured .project-number { font-size: 3.5rem; }
+        .project-highlight { display: flex; flex-direction: column; gap: 0.8rem; }
+        .highlight-item { display: flex; align-items: baseline; gap: 0.8rem; }
+        .highlight-label { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); font-weight: 600; min-width: 120px; }
+        .highlight-value { font-size: 0.88rem; color: var(--text-secondary); }
+
+        .toolkit-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1.2rem; margin-top: 3rem; }
+        .toolkit-item { padding: 1.8rem 1.4rem; background: var(--bg-card); border: 1px solid var(--border); text-align: center; box-shadow: var(--shadow-sm); transition: all 0.5s var(--ease-out-expo); }
+        .toolkit-item:hover { border-color: var(--border-hover); transform: translateY(-4px); box-shadow: var(--shadow-md); }
+        .toolkit-icon { font-size: 1.5rem; margin-bottom: 0.8rem; }
+        .toolkit-name { font-size: 0.82rem; font-weight: 600; margin-bottom: 0.3rem; }
+        .toolkit-desc { font-size: 0.72rem; color: var(--text-muted); line-height: 1.5; }
+
+        .education { background: var(--bg-secondary); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+        .edu-card { display: grid; grid-template-columns: auto 1fr; gap: 3rem; padding: 3rem; background: var(--bg-card); border: 1px solid var(--border); margin-top: 2rem; align-items: center; box-shadow: var(--shadow-sm); }
+        .edu-year { font-family: var(--font-display); font-size: 4.5rem; font-weight: 300; color: var(--accent); opacity: 0.25; line-height: 1; }
+        .edu-info h3 { font-family: var(--font-display); font-size: 1.7rem; font-weight: 500; margin-bottom: 0.4rem; }
+        .edu-info .edu-school { font-size: 1rem; color: var(--accent); margin-bottom: 0.3rem; font-weight: 500; }
+        .edu-info .edu-location { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.8rem; }
+        .edu-info .edu-detail { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.7; }
+        .edu-badge { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.4rem 1rem; background: var(--accent-dim); color: var(--accent); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; margin-top: 0.8rem; }
+
+        .contact { text-align: center; padding: 9rem 6%; }
+        .contact-title { font-family: var(--font-display); font-size: clamp(2.5rem,5vw,4rem); font-weight: 300; line-height: 1.1; margin-bottom: 1.5rem; }
+        .contact-title em { font-style: italic; color: var(--accent); }
+        .contact-subtitle { font-size: 1.02rem; color: var(--text-secondary); max-width: 520px; margin: 0 auto 3rem; line-height: 1.85; }
+        .contact-links { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; }
+        .contact-link { display: flex; align-items: center; gap: 0.5rem; padding: 0.8rem 1.8rem; border: 1.5px solid var(--border); font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 600; color: var(--text-primary); transition: all 0.4s var(--ease-out-expo); }
+        .contact-link:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-3px); box-shadow: var(--shadow-md); }
+        .footer { padding: 2rem 6%; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+        .footer-text { font-size: 0.75rem; color: var(--text-muted); }
+        .footer-back-top { font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-muted); cursor: pointer; transition: color 0.3s ease; }
+        .footer-back-top:hover { color: var(--accent); }
+
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeInScale { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+        @keyframes scrollPulse { 0%,100% { opacity: 0.3; transform: scaleY(0.6); } 50% { opacity: 1; transform: scaleY(1); } }
+
+        .stagger-children > * { opacity: 0; transform: translateY(30px); transition: all 0.7s var(--ease-out-expo); }
+        .stagger-children.visible > *:nth-child(1) { transition-delay: 0s; opacity: 1; transform: translateY(0); }
+        .stagger-children.visible > *:nth-child(2) { transition-delay: 0.1s; opacity: 1; transform: translateY(0); }
+        .stagger-children.visible > *:nth-child(3) { transition-delay: 0.15s; opacity: 1; transform: translateY(0); }
+        .stagger-children.visible > *:nth-child(4) { transition-delay: 0.2s; opacity: 1; transform: translateY(0); }
+        .stagger-children.visible > *:nth-child(5) { transition-delay: 0.25s; opacity: 1; transform: translateY(0); }
+        .stagger-children.visible > *:nth-child(6) { transition-delay: 0.3s; opacity: 1; transform: translateY(0); }
+        .stagger-children.visible > *:nth-child(7) { transition-delay: 0.35s; opacity: 1; transform: translateY(0); }
+        .stagger-children.visible > *:nth-child(8) { transition-delay: 0.4s; opacity: 1; transform: translateY(0); }
+
+        .tag-python { background: rgba(55,118,171,0.08); color: #2E7AB5; }
+        .tag-ml { background: rgba(46,125,50,0.07); color: #2E7D32; }
+        .tag-gpu { background: rgba(230,126,34,0.08); color: #C0711E; }
+        .tag-data { background: rgba(123,31,162,0.06); color: #8E24AA; }
+        .tag-trading { background: rgba(139,115,74,0.1); color: var(--accent); }
+
+        @media (max-width: 1024px) {
+            .hero { grid-template-columns: 1fr; text-align: center; padding-top: 8rem; }
+            .hero-content { padding-right: 0; order: 2; }
+            .hero-image-wrapper { order: 1; margin-bottom: 3rem; }
+            .hero-image-frame { width: 260px; height: 320px; }
+            .hero-description { margin: 0 auto 2.5rem; }
+            .hero-cta-group { justify-content: center; }
+            .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+            .projects-grid { grid-template-columns: 1fr; }
+            .project-card.featured { grid-column: span 1; grid-template-columns: 1fr; gap: 1.5rem; }
+            .toolkit-grid { grid-template-columns: repeat(2,1fr); }
+            .edu-card { grid-template-columns: 1fr; gap: 1.5rem; text-align: center; }
+        }
+        @media (max-width: 768px) {
+            .nav { padding: 1.2rem 1.5rem; }
+            .nav-links { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(250,250,248,0.97); backdrop-filter: blur(20px); flex-direction: column; justify-content: center; align-items: center; gap: 2rem; z-index: 999; }
+            .nav-links.open { display: flex; }
+            .nav-links a { font-size: 1.1rem; color: var(--text-primary); }
+            .nav-hamburger { display: flex; z-index: 1001; }
+            .section { padding: 5rem 5%; }
+            .hero { padding: 0 5%; min-height: auto; padding-top: 7rem; padding-bottom: 5rem; }
+            .hero-image-frame { width: 200px; height: 250px; }
+            .about-stats { grid-template-columns: 1fr 1fr; gap: 0.8rem; }
+            .stat-card { padding: 1.3rem; }
+            .toolkit-grid { grid-template-columns: 1fr 1fr; gap: 0.8rem; }
+            .contact { padding: 6rem 5%; }
+            .contact-links { flex-direction: column; align-items: center; }
+            .footer { flex-direction: column; gap: 1rem; text-align: center; }
+            .exp-item { padding-left: 2rem; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav" id="nav">
+        <div class="nav-logo">E<span>.</span>C</div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#about" onclick="closeNav()">About</a></li>
+            <li><a href="#experience" onclick="closeNav()">Experience</a></li>
+            <li><a href="#projects" onclick="closeNav()">Research</a></li>
+            <li><a href="#toolkit" onclick="closeNav()">Toolkit</a></li>
+            <li><a href="#education" onclick="closeNav()">Education</a></li>
+            <li><a href="#contact" onclick="closeNav()">Contact</a></li>
+        </ul>
+        <div class="nav-hamburger" id="hamburger" onclick="toggleNav()"><span></span><span></span><span></span></div>
+    </nav>
+
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <p class="hero-overline">Data Science · Quantitative Finance · ML Research</p>
+            <h1 class="hero-title">Edoardo<br><em>Camerinelli</em></h1>
+            <p class="hero-description">Scholarship-awarded Data Scientist and Quantitative Finance researcher. I transform hundreds of gigabytes of raw data into decisions that matter — blending machine learning, statistical rigour, and domain expertise.</p>
+            <div class="hero-cta-group">
+                <a href="#projects" class="btn-primary">View Research ↓</a>
+                <a href="#contact" class="btn-outline">Get in Touch</a>
+            </div>
+        </div>
+        <div class="hero-image-wrapper">
+            <div class="hero-image-frame">
+                <img src="profile.png" alt="Edoardo Camerinelli" loading="eager">
+                <p class="hero-image-label">Lugano, Switzerland</p>
+            </div>
+        </div>
+        <div class="scroll-indicator"><span>Scroll</span><div class="scroll-line"></div></div>
+    </section>
+
+    <section class="section about" id="about">
+        <div class="reveal">
+            <p class="section-label">01 — About</p>
+            <h2 class="section-title">Turning raw data into<br><em>actionable intelligence</em></h2>
+            <div class="section-divider"></div>
+        </div>
+        <div class="about-grid">
+            <div class="about-text reveal">
+                <p>At the <strong>International Security Ligue</strong>, I apply machine learning and quantitative methods to large-scale public procurement research — classifying thousands of tender documents, building dashboards and reports, and studying APIs to feed data-driven models.</p>
+                <p>As Co-Founder of <strong>E&amp;A Group</strong>, I help SMEs gain strategic insights through big data analysis and automate business processes through the power of IT. I am also an active contributor to the <strong>Starting Finance Club USI</strong>, where I have published multiple quantitative finance research papers.</p>
+                <p>I am driven by one question: <em>what story is hidden inside the data — and how can it change the way we act?</em></p>
+            </div>
+            <div class="about-stats stagger-children">
+                <div class="stat-card"><div class="stat-number">5+</div><div class="stat-label">Research Papers</div></div>
+                <div class="stat-card"><div class="stat-number">3</div><div class="stat-label">Languages Spoken</div></div>
+                <div class="stat-card"><div class="stat-number">C1</div><div class="stat-label">IELTS Academic</div></div>
+                <div class="stat-card"><div class="stat-number">BSc</div><div class="stat-label">Quantitative Finance</div></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="experience">
+        <div class="reveal">
+            <p class="section-label">02 — Experience</p>
+            <h2 class="section-title">Professional <em>journey</em></h2>
+            <div class="section-divider"></div>
+        </div>
+        <div class="experience-timeline reveal">
+            <div class="exp-item">
+                <div class="exp-date">March 2025 — Present</div>
+                <h3 class="exp-role">Data Scientist</h3>
+                <p class="exp-company">International Security Ligue (ISL)</p>
+                <p class="exp-location">Zollikofen, Berne, Switzerland</p>
+                <p class="exp-description">Applying Machine Learning and quantitative analysis to large-scale public procurement data for research purposes. Designing and training ML models to classify and structure unstructured tender data, building interactive dashboards and automated reports, and integrating external APIs and data pipelines to enrich datasets at scale.</p>
+                <div class="exp-tags"><span class="exp-tag tag-ml">Machine Learning</span><span class="exp-tag tag-python">Python</span><span class="exp-tag tag-data">Public Procurement</span><span class="exp-tag">NLP</span><span class="exp-tag">Dashboards</span></div>
+            </div>
+            <div class="exp-item">
+                <div class="exp-date">November 2025 — Present</div>
+                <h3 class="exp-role">Co-Founder</h3>
+                <p class="exp-company">E&amp;A Group</p>
+                <p class="exp-location">IT Consultants Association</p>
+                <p class="exp-description">Co-founded an IT consulting practice focused on empowering SMEs with strategic insights derived from big data analysis and automated business processes. Bridging the gap between advanced analytics and real-world business operations.</p>
+                <div class="exp-tags"><span class="exp-tag">Big Data</span><span class="exp-tag">Strategy</span><span class="exp-tag">Automation</span></div>
+            </div>
+            <div class="exp-item">
+                <div class="exp-date">September 2025 — Present</div>
+                <h3 class="exp-role">Quantitative Research Contributor</h3>
+                <p class="exp-company">Starting Finance Club USI</p>
+                <p class="exp-location">Lugano, Ticino, Switzerland</p>
+                <p class="exp-description">Active member and published contributor of the Starting Finance club at USI. Authored multiple quantitative finance research papers spanning FX mean reversion, cointegration persistence, and ML-driven volatility regime detection.</p>
+                <div class="exp-tags"><span class="exp-tag tag-trading">Quantitative Finance</span><span class="exp-tag tag-python">Python</span><span class="exp-tag">Research</span></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section projects" id="projects">
+        <div class="reveal">
+            <p class="section-label">03 — Research &amp; Projects</p>
+            <h2 class="section-title">Selected <em>works</em></h2>
+            <div class="section-divider"></div>
+        </div>
+        <div class="projects-grid stagger-children">
+            <div class="project-card featured">
+                <div>
+                    <div class="project-number">01</div>
+                    <div class="project-date">December 2025 — January 2026</div>
+                    <h3 class="project-title">Persistence Analysis of Cointegration Relationships in Foreign Exchange Markets</h3>
+                    <p class="project-description">Investigating the temporal stability of cointegration across 32 currency pairs (496 combinations) using 9 years of minute-level data with GPU acceleration. The study reveals that 65–80% of cointegrated pairs maintain their relationship the following day, with 90-day estimation windows providing significantly higher stability than shorter horizons.</p>
+                </div>
+                <div class="project-highlight">
+                    <div class="highlight-item"><span class="highlight-label">Success Rate</span><span class="highlight-value">65–80% persistence day-over-day</span></div>
+                    <div class="highlight-item"><span class="highlight-label">Window</span><span class="highlight-value">90-day optimal vs. 14-day baseline</span></div>
+                    <div class="highlight-item"><span class="highlight-label">Beta Drift</span><span class="highlight-value">8–20% daily hedge ratio shift</span></div>
+                    <div class="highlight-item"><span class="highlight-label">Signal</span><span class="highlight-value">ADF &lt; –5.0 exponentially improves persistence</span></div>
+                    <div class="project-tags"><span class="exp-tag tag-gpu">GPU Computing</span><span class="exp-tag tag-python">Python</span><span class="exp-tag tag-trading">Algorithmic Trading</span></div>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-number">02</div>
+                <div class="project-date">December 2025 — January 2026</div>
+                <h3 class="project-title">Predictive Modeling of Explosive Volatility Regimes</h3>
+                <p class="project-description">A supervised ML framework for predicting explosive volatility regimes in AUD/NZD, designed to protect grid trading strategies from catastrophic drawdowns. Developed a Random Forest classifier on 90 engineered features achieving an AUC of 0.728 with a 12-hour prediction horizon.</p>
+                <div class="project-tags"><span class="exp-tag tag-ml">Machine Learning</span><span class="exp-tag tag-trading">Risk Management</span></div>
+            </div>
+            <div class="project-card">
+                <div class="project-number">03</div>
+                <div class="project-date">June — October 2025</div>
+                <h3 class="project-title">Monte Carlo Validation of Mean Reversion Strategies</h3>
+                <p class="project-description">Validating the statistical robustness of a mean reversion trading strategy through 100,000+ simulated paths of EUR/GBP minute-level data generated via ARIMA time-series models. Implemented in Python with Numba and parallel computing for large-scale efficiency.</p>
+                <div class="project-tags"><span class="exp-tag tag-python">Numba</span><span class="exp-tag tag-data">Big Data</span><span class="exp-tag tag-trading">Algorithmic Trading</span></div>
+            </div>
+            <div class="project-card">
+                <div class="project-number">04</div>
+                <div class="project-date">September 2025</div>
+                <h3 class="project-title">Mean Reverting Properties of FX Currencies</h3>
+                <p class="project-description">A comprehensive study on daily mean-reversion strategies applied to foreign exchange markets, examining how sophisticated portfolio construction techniques can transform a basic contrarian trading rule into a robust investment strategy.</p>
+                <div class="project-tags"><span class="exp-tag tag-python">Python</span><span class="exp-tag tag-trading">FX Strategy</span></div>
+            </div>
+            <div class="project-card">
+                <div class="project-number">05</div>
+                <div class="project-date">September 2025</div>
+                <h3 class="project-title">Predicting Bank Defaults with Classification Algorithms</h3>
+                <p class="project-description">Developed a predictive model to identify companies at risk of bankruptcy using the Polish Companies Bankruptcy Dataset. Applied advanced preprocessing, class imbalance techniques, and classification algorithms (Random Forest, Gradient Boosting) achieving ROC-AUC up to 0.94 across 65 financial ratios.</p>
+                <div class="project-tags"><span class="exp-tag tag-ml">Machine Learning</span><span class="exp-tag tag-python">Python</span><span class="exp-tag tag-data">Financial Risk</span></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="toolkit">
+        <div class="reveal">
+            <p class="section-label">04 — Toolkit</p>
+            <h2 class="section-title">Technical <em>stack</em></h2>
+            <div class="section-divider"></div>
+        </div>
+        <div class="toolkit-grid stagger-children">
+            <div class="toolkit-item"><div class="toolkit-icon">🐍</div><div class="toolkit-name">Python</div><div class="toolkit-desc">Core language for ML, data analysis &amp; automation</div></div>
+            <div class="toolkit-item"><div class="toolkit-icon">🧠</div><div class="toolkit-name">Machine Learning</div><div class="toolkit-desc">scikit-learn, Random Forest, Gradient Boosting</div></div>
+            <div class="toolkit-item"><div class="toolkit-icon">⚡</div><div class="toolkit-name">GPU / Numba</div><div class="toolkit-desc">High-performance parallel computing</div></div>
+            <div class="toolkit-item"><div class="toolkit-icon">📊</div><div class="toolkit-name">Data Visualisation</div><div class="toolkit-desc">Dashboards, automated reports &amp; insights</div></div>
+            <div class="toolkit-item"><div class="toolkit-icon">📈</div><div class="toolkit-name">Quantitative Finance</div><div class="toolkit-desc">Time-series, cointegration, backtesting</div></div>
+            <div class="toolkit-item"><div class="toolkit-icon">🔌</div><div class="toolkit-name">APIs &amp; Pipelines</div><div class="toolkit-desc">Data ingestion, ETL, and system integration</div></div>
+            <div class="toolkit-item"><div class="toolkit-icon">🗄️</div><div class="toolkit-name">Server Admin</div><div class="toolkit-desc">Linux server administration &amp; deployment</div></div>
+            <div class="toolkit-item"><div class="toolkit-icon">📝</div><div class="toolkit-name">NLP</div><div class="toolkit-desc">Text classification &amp; document processing</div></div>
+        </div>
+    </section>
+
+    <section class="section education" id="education">
+        <div class="reveal">
+            <p class="section-label">05 — Education</p>
+            <h2 class="section-title">Academic <em>foundation</em></h2>
+            <div class="section-divider"></div>
+        </div>
+        <div class="edu-card reveal">
+            <div class="edu-year">USI</div>
+            <div class="edu-info">
+                <h3>Bachelor of Science in Quantitative Methods for Finance</h3>
+                <p class="edu-school">USI — Università della Svizzera italiana</p>
+                <p class="edu-location">Lugano, Ticino, Switzerland · 2023 — 2026</p>
+                <p class="edu-detail">Rigorous programme combining financial theory, statistical modelling, and computational methods. Recipient of the Bachelor's Annual Scholarship at USI. IELTS C1 Academic English certified.</p>
+                <div class="edu-badge">🏅 Scholarship Recipient</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section contact" id="contact">
+        <div class="reveal">
+            <h2 class="contact-title">Let's build something<br><em>extraordinary</em></h2>
+            <p class="contact-subtitle">Whether you are looking for a data-driven consultant, a quantitative researcher, or simply want to discuss the hidden stories within your data — I would be glad to connect.</p>
+            <div class="contact-links">
+                <a href="mailto:camerinelli.edoardo@outlook.it" class="contact-link">✉ Email</a>
+                <a href="https://www.linkedin.com/in/edoardo-camerinelli/" target="_blank" rel="noopener" class="contact-link">🔗 LinkedIn</a>
+                <a href="https://github.com/edoardoCame" target="_blank" rel="noopener" class="contact-link">⌨ GitHub</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p class="footer-text">© 2026 Edoardo Camerinelli. Crafted with precision.</p>
+        <a href="#hero" class="footer-back-top">Back to top ↑</a>
+    </footer>
+
+    <script>
+        const nav=document.getElementById('nav');window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>60)});function toggleNav(){document.getElementById('navLinks').classList.toggle('open')}function closeNav(){document.getElementById('navLinks').classList.remove('open')}const observer=new IntersectionObserver(e=>{e.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{root:null,rootMargin:'0px 0px -80px 0px',threshold:0.12});document.querySelectorAll('.reveal,.stagger-children').forEach(e=>observer.observe(e));document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',function(e){e.preventDefault();const t=document.querySelector(this.getAttribute('href'));if(t)window.scrollTo({top:t.getBoundingClientRect().top+window.scrollY-80,behavior:'smooth'})})});
+    </script>
+</body>
+</html>
